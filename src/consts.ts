@@ -2,15 +2,21 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Astro Sphere",
-  DESCRIPTION: "Welcome to Astro Sphere, a portfolio and blog for designers and developers.",
-  AUTHOR: "Mark Horn",
+  TITLE: "Joshua Hitchon",
+  DESCRIPTION: "My name is Joshua Hitchon and I am a software developer in the UK. This is my portfolio and blog site, where you can find out all about me and my work.",
+  AUTHOR: "Joshua Hitchon",
 }
 
 // Work Page
 export const WORK: Page = {
   TITLE: "Work",
   DESCRIPTION: "Places I have worked.",
+}
+
+// Education Page
+export const EDUCATION: Page = {
+  TITLE: "Education",
+  DESCRIPTION: "My academic story and qualifications.",
 }
 
 // Blog Page
@@ -28,7 +34,7 @@ export const PROJECTS: Page = {
 // Search Page
 export const SEARCH: Page = {
   TITLE: "Search",
-  DESCRIPTION: "Search all posts and projects by keyword.",
+  DESCRIPTION: "Search over my blog posts and projects by keyword.",
 }
 
 // Links
@@ -36,6 +42,10 @@ export const LINKS: Links = [
   { 
     TEXT: "Home", 
     HREF: "/", 
+  },
+  {
+    TEXT: "Education",
+    HREF: "/education"
   },
   { 
     TEXT: "Work", 
@@ -56,26 +66,26 @@ export const SOCIALS: Socials = [
   { 
     NAME: "Email",
     ICON: "email", 
-    TEXT: "markhorn.dev@gmail.com",
-    HREF: "mailto:markhorn.dev@gmail.com",
+    TEXT: "hello@joshuahitchon.com",
+    HREF: "mailto:hello@joshuahitchon.com",
   },
   { 
     NAME: "Github",
     ICON: "github",
-    TEXT: "markhorn-dev",
-    HREF: "https://github.com/markhorn-dev/astro-sphere"
+    TEXT: "JSH4a",
+    HREF: "https://github.com/JSH4a"
   },
   { 
     NAME: "LinkedIn",
     ICON: "linkedin",
-    TEXT: "markhorn-dev",
-    HREF: "https://www.linkedin.com/in/markhorn-dev/",
+    TEXT: "Joshua Hitchon",
+    HREF: "https://www.linkedin.com/in/joshua-hitchon/",
   },
-  { 
-    NAME: "Twitter",
-    ICON: "twitter-x",
-    TEXT: "markhorn_dev",
-    HREF: "https://twitter.com/markhorn_dev",
-  },
+  // { 
+  //   NAME: "Twitter",
+  //   ICON: "twitter-x",
+  //   TEXT: "markhorn_dev",
+  //   HREF: "https://twitter.com/markhorn_dev",
+  // },
 ]
 
