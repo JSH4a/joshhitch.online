@@ -7,6 +7,13 @@ export const SITE: Site = {
   AUTHOR: "Joshua Hitchon",
 }
 
+// CV Page
+export const CV: Page = {
+  TITLE: "CV",
+  DESCRIPTION: "About me, my education, and experience.",
+}
+
+
 // Work Page
 export const WORK: Page = {
   TITLE: "Work",
@@ -44,12 +51,8 @@ export const LINKS: Links = [
     HREF: "/", 
   },
   {
-    TEXT: "Education",
-    HREF: "/education"
-  },
-  { 
-    TEXT: "Work", 
-    HREF: "/work", 
+    TEXT: "CV",
+    HREF: "/cv"
   },
   { 
     TEXT: "Blog", 

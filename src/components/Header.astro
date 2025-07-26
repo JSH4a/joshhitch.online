@@ -11,8 +11,23 @@ import Container from "@components/Container.astro"
     <div class="relative h-full w-full">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
         <a href="/" class="flex gap-1 text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
-          <svg class="size-6 fill-current">
-            <use href="/brand.svg#brand"></use>
+          <svg id="logo" class="size-6 stroke-current text-black dark:text-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 809.999993" height="1080" preserveAspectRatio="xMidYMid meet" version="1.2">
+            <defs>
+              <clipPath id="04c5af5223">
+                <path d="M 405 0 C 181.324219 0 0 181.324219 0 405 C 0 628.675781 181.324219 810 405 810 C 628.675781 810 810 628.675781 810 405 C 810 181.324219 628.675781 0 405 0 Z M 405 0 "/>
+              </clipPath>
+            </defs>
+            <g id="2d4c7aa325">
+              <g clip-rule="nonzero" clip-path="url(#04c5af5223)">
+                <path style="fill:none;stroke-width:140;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 540.000023 -0.0000266667 C 241.765632 -0.0000266667 -0.00000466667 241.76561 -0.00000466667 540.000001 C -0.00000466667 838.234391 241.765632 1080.000028 540.000023 1080.000028 C 838.234413 1080.000028 1080.00005 838.234391 1080.00005 540.000001 C 1080.00005 241.76561 838.234413 -0.0000266667 540.000023 -0.0000266667 Z M 540.000023 -0.0000266667 " transform="matrix(0.75,0,0,0.75,0.0000035,0.00002)"/>
+              </g>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 24.539111 24.955782 C 297.390838 293.221308 510.290316 293.224375 663.238408 24.957665 " transform="matrix(0.464266,-0.588459,0.588459,0.464266,0.97265,407.854151)"/>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 10.68647 117.922171 C 355.548104 7.359672 689.399118 7.362186 1012.229263 117.919117 " transform="matrix(-0.0117062,-0.750229,0.748747,-0.0116831,235.468,789.379372)"/>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 28.797392 19.888395 C 246.002151 334.400978 410.196454 334.401921 521.390467 19.888931 " transform="matrix(-0.164792,0.731152,-0.731152,-0.164792,424.290918,387.210469)"/>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 10.938662 117.922083 C 347.041825 7.361922 672.413657 7.361535 987.048955 117.920697 " transform="matrix(-0.032558,-0.749563,0.748519,-0.0325127,483.350955,777.427709)"/>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 24.765502 24.734017 C 197.602387 197.807529 370.443852 197.806418 543.280259 24.734637 " transform="matrix(0.284631,-0.693847,0.693847,0.284631,374.222944,417.916823)"/>
+              <path style="fill:none;stroke-width:70;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;" d="M 25.296907 24.184575 C 393.447657 409.267381 591.995805 409.270376 620.942476 24.186282 " transform="matrix(-0.443169,0.605063,-0.605063,-0.443169,835.840089,400.403817)"/>
+            </g>
           </svg>
           <div>
             {SITE.TITLE}
