@@ -1,7 +1,7 @@
 ---
 company: "Smartbox"
 role: "Software Developer"
-dateStart: "09/05/2025"
+dateStart: "05/09/2025"
 dateEnd: "Now"
 ---
 

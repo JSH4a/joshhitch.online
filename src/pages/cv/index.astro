@@ -5,12 +5,17 @@ import TopLayout from "@layouts/TopLayout.astro"
 import BottomLayout from "@layouts/BottomLayout.astro"
 import { CV } from "@consts"
 
-const collection = await getCollection("education")
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0,3)
 
-collection.sort((a, b) => new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime())
+const educationCollection = await getCollection("education")
+
+educationCollection.sort((a, b) => new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime())
 
 const education = await Promise.all(
-  collection.map(async (item) => {
+  educationCollection.map(async (item) => {
     const { Content } = await item.render()
     return { ...item, Content }
   })
@@ -26,44 +31,139 @@ function formatWorkDate(input: Date | string) {
   const year = new Date(input).getFullYear()
   return `${month} ${year}`
 }
+
+const workCollection = await getCollection("work")
+
+workCollection.sort((a, b) => new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime())
+
+const work = await Promise.all(
+  workCollection.map(async (item) => {
+    const { Content } = await item.render()
+    return { ...item, Content }
+  })
+)
+
+
 ---
 
 <PageLayout title={CV.TITLE} description={CV.DESCRIPTION}>
   <TopLayout>
-    <div class="animate page-heading">
+    <h1 class="text-3xl font-semibold text-black dark:text-white mt-2">
       {CV.TITLE}
-    </div>
+    </h1>
   </TopLayout>
   <BottomLayout>
-    <ol class="animate relative border-s border-gray-200 dark:border-gray-700">  
-      { 
-        education.map((entry) => (                
-        <li class="mb-10 ms-6">
-          <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-            </svg>
-          </span>
+    <article class="animate">
+      <article class="animate">
+        <h1>About me</h1>
 
-          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-            {entry.data.institution}
-          </h3>
+        <p>
+          I am a recent graduate and software developer, working to make technology more accessible, ethical, and open. I have contributed to government applications designed to work for everyone, and I have a strong academic background in user-centered design and tailoring software to individual needs. Currently, I help develop communication tools and devices that support AAC users in their daily lives.
+        </p>
 
-          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-            {formatWorkDate(entry.data.dateStart)} - {formatWorkDate(entry.data.dateEnd)}
-          </time>
+        <p>
+          I am a curious and consistent learner who enjoys exploring new technologies and ideas. I also enjoy sharing what I learn and helping others, which is why I created this site: to document my journey and the things I have discovered along the way.
+        </p>
+      </article>
 
-          <details class="group">
-            <summary class="mb-2 cursor-pointer text-base font-normal text-gray-500 dark:text-gray-400 hover:underline">
-              {entry.data.qualification}
-            </summary>
-            <article class="prose dark:prose-invert">
-              <entry.Content />
-            </article>
-          </details>
-        </li>
-      ))
-    }
-  </ol>
+      <article class="animate">
+        <h1>Education</h1>
+        
+        <ol class="animate relative border-s border-gray-200 dark:border-gray-700">  
+          { 
+            education.map((entry) => (                
+            <li class="mb-10 ms-6">
+              <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+              </span>
+    
+              <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                {entry.data.institution}
+              </h3>
+    
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {formatWorkDate(entry.data.dateStart)} - {formatWorkDate(entry.data.dateEnd)}
+              </time>
+    
+              <details class="group">
+                <summary class="mb-2 cursor-pointer text-base font-normal text-gray-500 dark:text-gray-400 hover:underline">
+                  {entry.data.qualification}
+                </summary>
+                <article class="prose dark:prose-invert">
+                  <entry.Content />
+                </article>
+              </details>
+            </li>
+          ))
+        }
+      </ol>
+      </article>
+
+      <article class="animate">
+        <h1>Experience</h1>
+
+        <ol class="animate relative border-s border-gray-200 dark:border-gray-700">  
+          { 
+            work.map((entry) => (                
+            <li class="mb-10 ms-6">
+              <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+              </span>
+    
+              <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                {entry.data.role}
+              </h3>
+    
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {formatWorkDate(entry.data.dateStart)} - {formatWorkDate(entry.data.dateEnd)}
+              </time>
+    
+              <details class="group">
+                <summary class="mb-2 cursor-pointer text-base font-normal text-gray-500 dark:text-gray-400 hover:underline">
+                  {entry.data.company}
+                </summary>
+                <article class="prose dark:prose-invert">
+                  <entry.Content />
+                </article>
+              </details>
+            </li>
+          ))
+        }
+      </ol>
+        
+      </article>
+
+      <!-- Project Preview Section -->
+      <article class="animate">
+        <h1>Projects</h1>
+        <section class="animate">
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <p class="font-semibold text-black dark:text-white">
+                Recent projects
+              </p>
+              <a href="/projects" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+                <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                  All projects
+                </span>
+              </a>
+            </div>
+            <ul class="space-y-4">
+              {projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </article>
+
+    </article>
+  </section>
   </BottomLayout>
 </PageLayout>
