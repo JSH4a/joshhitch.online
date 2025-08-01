@@ -19,7 +19,7 @@ Bath Hack is an annual hackathon event held by the University of Bath and the Ba
 
 TLDR; everyone is given 24 hours to build whatever they like, with various prize tracks on offer.
 
-We were chosen by one of teh sponsors, Xmos, as winnders for the Best Embedded System With our project "Ghostly": a plug-and-play device to turn any touch-screen into a touchless one, through hand and eye-tracking.
+We were chosen by one of the sponsors, Xmos, as winners for the Best Embedded System with our project "Ghostly": a plug-and-play device to turn any touch-screen into a touchless one, through hand and eye-tracking.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mcAFnZiZ43Y?si=meNZivrEYMW7YU_H" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
